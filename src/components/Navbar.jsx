@@ -32,17 +32,17 @@ export default function Navbar() {
             {/* Nav Links */}
             <ul className="navbar-nav mx-auto mt-2 mt-lg-0 fs-5 gap-lg-3">
               <li className="nav-item">
-                <Link className="nav-link " to="#">
+                <Link className="nav-link " to="/home">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
+                <Link className="nav-link" to="/services">
                   Services
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
+                <Link className="nav-link" to="/contact">
                   Contact
                 </Link>
               </li>

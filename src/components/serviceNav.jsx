@@ -1,8 +1,7 @@
-function ServiceNav() {
+export default function ServiceNav() {
   return (
     <>
       
     </>
   );
 }
-export default ServiceNav;
