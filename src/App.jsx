@@ -16,7 +16,7 @@ export default function App() {
           <Routes>
             <Route index element={<HomePage />} />
 
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
 
             <Route path="/services" element={<ServicePage />} />
 

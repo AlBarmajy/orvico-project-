@@ -8,7 +8,7 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-sm navbar-light bg-light ">
         <div className="container ">
           {/* logo */}
-          <Link className="  d-flex align-items-center logo me-lg-5" to="#">
+          <Link className="  d-flex align-items-center logo me-lg-5" to="/">
             {/* <i className="fa-solid fa-screwdriver-wrench"></i> */}
             <h3 className="m-0">
               {" "}
@@ -32,7 +32,7 @@ export default function Navbar() {
             {/* Nav Links */}
             <ul className="navbar-nav mx-auto mt-2 mt-lg-0 fs-5 gap-lg-3">
               <li className="nav-item">
-                <Link className="nav-link " to="/home">
+                <Link className="nav-link " to="/">
                   Home
                 </Link>
               </li>
