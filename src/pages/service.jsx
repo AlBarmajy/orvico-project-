@@ -1,7 +1,6 @@
 // src/pages/service.jsx
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 import ServiceNav from "../components/serviceNav";
-
 export default function ServicePage() {
   return (
     <Container className="my-5">

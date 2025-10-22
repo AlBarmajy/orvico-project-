@@ -1,7 +1,11 @@
+// src/App.jsx
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ServicePage from "./pages/service";
+import ContactPage from "./pages/contact";
+import HomePage from "./pages/Home";
 
 export default function App() {
   return (
@@ -10,13 +14,13 @@ export default function App() {
         <Navbar />
         <main>
           <Routes>
-            
-            <Route path="/home" element={<h2>Home Page Placeholder</h2>} />
+            <Route index element={<HomePage />} />
+
+            <Route path="/home" element={<HomePage />} />
 
             <Route path="/services" element={<ServicePage />} />
 
             <Route path="/contact" element={<ContactPage />} />
-
           </Routes>
         </main>
       </BrowserRouter>
