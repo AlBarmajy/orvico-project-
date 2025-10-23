@@ -7,6 +7,8 @@ import {
   Button,
   InputGroup,
   FloatingLabel,
+  Dropdown,
+  DropdownButton,
 } from "react-bootstrap";
 
 export default function ServicePage() {
@@ -228,18 +230,29 @@ export default function ServicePage() {
                 <Form.Label>Budget</Form.Label>
                 <InputGroup hasValidation>
                   {/* Currency Select */}
-                  <Form.Select
-                    aria-label="Currency"
-                    style={{ maxWidth: "100px" }}
-                    name="currency"
-                    value={formData.currency}
-                    onChange={handleChange}
-                    className="custom-form-control rounded-pill"
+
+                  <DropdownButton
+                    variant="outline-warning"
+                    title={formData.currency}
+                    as={InputGroup.Prepend}
+                    id="input-group-currency-select"
+                    className="currency-dropdown"
                   >
-                    <option>EGP</option>
-                    <option>USD</option>
-                    <option>SAR</option>
-                  </Form.Select>
+                    {["EGP", "USD", "SAR"].map((currency) => (
+                      <Dropdown.Item
+                        key={currency}
+                        onClick={() =>
+                          handleChange({
+                            target: { name: "currency", value: currency },
+                          })
+                        }
+                        active={formData.currency === currency}
+                      >
+                        {currency}
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+
                   {/* Budget Input */}
                   <Form.Control
                     type="text"
@@ -247,17 +260,13 @@ export default function ServicePage() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className="rounded-pill custom-form-control"
+                    className="custom-form-control"
                     isInvalid={!!validationErrors.budget}
                   />
-
                   <Form.Control.Feedback type="invalid" tooltip>
                     {validationErrors.budget}
                   </Form.Control.Feedback>
                 </InputGroup>
-                <Form.Control.Feedback type="invalid">
-                  {validationErrors.budgetValue}{" "}
-                </Form.Control.Feedback>
               </Form.Group>
             </Row>
 

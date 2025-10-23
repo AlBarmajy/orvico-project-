@@ -27,83 +27,71 @@ a:hover {
   color: var(--main-color) !important;
 }
 /* Start Navbar */
-.logo{
+.logo {
   color: var(--main-color);
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
   text-decoration: none;
 }
-.nav-link:hover
-{
+.nav-link:hover {
   color: var(--main-color);
 }
 /* End Navbar */
 
-/* **************Login ******************* */
-.forget
-{
+/* Start Login */
+.forget {
   color: var(--main-color);
 }
 .big-radio {
   transform: scale(1.5);
-  accent-color: var(--main-color); 
+  accent-color: var(--main-color);
   cursor: pointer;
-  
 }
-.remember
-{
-    font-size: 18px;
+.remember {
+  font-size: 18px;
 }
+/* End Login */
 
-/* *********************SignUp******************* */
-.heading
-{
+/* Start SignUp */
+.heading {
   color: var(--main-color);
 }
-.heading+p
-{
+.heading + p {
   font-size: 18px;
   color: #757b85;
 }
-.tologin
-{
+.tologin {
   color: var(--main-color);
 }
-.submitBtn
-{
-    background-color: var(--main-color) ;
-    color: #fff ;
-    width: 100px;
+.submitBtn {
+  background-color: var(--main-color);
+  color: #fff;
+  width: 100px;
 }
 
-.submitBtn:hover
-{
-    background-color:var(--main-color);
-    color: #fff;
+.submitBtn:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }
 
-.form-control:focus
-{
-  box-shadow:0 0 0 .25rem var( --hover-secondary-color) ;
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem var(--hover-secondary-color);
   border-color: transparent;
 }
 
-.agreePolicy
-{
-    font-size: 18px;
+.agreePolicy {
+  font-size: 18px;
 }
-.agreePolicy>span 
-{
-    color: var(--main-color);
-    font-weight: 500;
+.agreePolicy > span {
+  color: var(--main-color);
+  font-weight: 500;
 }
 .big-check {
   transform: scale(1.7);
-  accent-color: var(--main-color); 
+  accent-color: var(--main-color);
   cursor: pointer;
 }
-.form
-{
-    padding: 35px;
+.form {
+  padding: 35px;
 }
 .password-toggle {
   position: absolute;
@@ -122,11 +110,10 @@ a:hover {
   transform: translateY(-50%) scale(1.1);
   opacity: 1;
 }
+/* End SignUp */
 
-/* **************************Contacts********************* */
-
-.contacts-Container .left i
-{
+/* Start Contacts */
+.contacts-Container .left i {
   background-color: var(--secondary-color);
   width: 40px;
   height: 40px;
@@ -134,20 +121,15 @@ a:hover {
   border-radius: 50%;
   cursor: pointer;
 }
-.left h2
-{
-  font-size: 40px ;
+.left h2 {
+  font-size: 40px;
   font-weight: 700;
   color: var(--main-color);
 }
-.left .link
-{
+.left .link {
   color: var(--main-color);
 }
-/* .office, .email, .phone
-{
-  box-shadow: 0px 0px 7px var(--hover-secondary-color);
-} */
+/* End Contacts */
 
 /* Start Services */
 .custom-form-control:hover,
@@ -179,6 +161,38 @@ a:hover {
   opacity: 0.8;
 }
 
+.dropdown-item {
+  text-align: center;
+  height: 35px;
+  margin-block: 2px;
+  transition: 0.2s;
+}
+.dropdown-item:first-child {
+  border-radius: 20px 20px 10px 10px;
+}
+.dropdown-item:nth-child(2) {
+  border-radius: 10px;
+}
+.dropdown-item:nth-child(3) {
+  border-radius: 10px 10px 20px 20px;
+}
+
+.dropdown-menu {
+  border-radius: 25px;
+  border: 1px solid var(--main-color);
+  padding: 0 2px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item.active {
+  background-color: var(--hover-main-color) !important;
+  color: white !important;
+}
+
+.input-group > .form-control {
+  border-radius: 0 50rem 50rem 0;
+}
 /* End Services */
 
 /* Start Footer */
