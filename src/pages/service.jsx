@@ -8,10 +8,9 @@ import {
   InputGroup,
   FloatingLabel,
 } from "react-bootstrap";
-import ServiceNav from "../components/serviceNav";
 
 export default function ServicePage() {
-  // Initial form state (Updated currency to EGP based on your uploaded file)
+  // Initial form state
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -38,21 +37,101 @@ export default function ServicePage() {
         [name]: value,
       }));
     }
+
+    // Clear validation error instantly when user types
+    if (validationErrors[name]) {
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: undefined,
+      }));
+    }
+  };
+
+  // Validation State
+  const [validationErrors, setValidationErrors] = useState({});
+
+  // Form validation
+  const validateForm = (data) => {
+    const errors = {};
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // --- 1. Title ---
+    if (!data.title || data.title.length < 5) {
+      errors.title = "Title required with minimum 5 characters.";
+    }
+
+    // --- 2. Description ---
+    if (!data.description || data.description.length < 15) {
+      errors.description =
+        "Please provide a description of at least 15 characters.";
+    }
+
+    // --- 3. Observations ---
+
+    // --- 4. Address ---
+    if (!data.address || data.address.length < 10) {
+      errors.address = "Address required with a minimum of 10 characters.";
+    }
+
+    // --- 5. Preferred Date ---
+    if (!data.preferredDate) {
+      errors.preferredDate = "A preferred date must be specified.";
+    } else {
+      const selectedDate = new Date(data.preferredDate);
+      if (selectedDate <= today) {
+        errors.preferredDate = "The preferred date should be in the future.";
+      }
+    }
+
+    // --- 6. Budget ---
+    const budgetValue = parseFloat(data.budget);
+    if (!budgetValue || budgetValue <= 0) {
+      errors.budget = "The budget is required and must be a positive value.";
+    }
+
+    // --- 7. Images ---
+    if (data.images.length === 0) {
+      errors.images = "You must upload at least one file.";
+    }
+
+    return errors;
   };
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 1. Verification application
+    const errors = validateForm(formData);
+
+    // 2. Update error status
+    setValidationErrors(errors);
+
+    // 3. Check for errors before submitting
+    if (Object.keys(errors).length > 0) {
+      console.log("Validation Errors:", errors);
+      alert("Please correct errors in the form before submitting.");
+      return;
+    }
+
+    // API Integration Point - If the model is valid
     console.log("Form Data Submitted:", formData);
-    alert("Request Submitted! Check the console.");
+    alert("Service request sent successfully!");
+
+    // ...; code to send data to the server (fetch/axios)
   };
 
+  // --------------- RETURN JSX --------------- //
+  // --------------- RETURN JSX --------------- //
+  // --------------- RETURN JSX --------------- //
   return (
     <Container className="my-5">
       <div className="text-center mb-5">
         <h2 className="display-4 fw-bold text-dark">Post a Service Request</h2>
         <p className="lead">Let's find the right professional for your job.</p>
       </div>
+
       <Row className="justify-content-center">
         <Col lg={8}>
           <Form onSubmit={handleSubmit}>
@@ -68,14 +147,17 @@ export default function ServicePage() {
                   value={formData.title}
                   onChange={handleChange}
                   className="custom-form-control rounded-pill"
+                  isInvalid={!!validationErrors.title}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {validationErrors.title}
+                </Form.Control.Feedback>
               </FloatingLabel>
             </Form.Group>
 
             {/* 2. Description */}
             <Form.Group className="mb-4">
               <Form.Label>Description</Form.Label>
-              {/* <FloatingLabel controlId="descriptionInput" label="Description"> */}
               <Form.Control
                 as="textarea"
                 rows={4}
@@ -84,14 +166,16 @@ export default function ServicePage() {
                 value={formData.description}
                 onChange={handleChange}
                 className="large-radius custom-form-control"
+                isInvalid={!!validationErrors.description}
               />
-              {/* </FloatingLabel> */}
+              <Form.Control.Feedback type="invalid">
+                {validationErrors.description}
+              </Form.Control.Feedback>
             </Form.Group>
 
             {/* 3. Observations */}
             <Form.Group className="mb-4">
               <Form.Label>Observations</Form.Label>
-              {/* <FloatingLabel controlId="observationsInput" label="Observations"> */}
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -101,7 +185,6 @@ export default function ServicePage() {
                 onChange={handleChange}
                 className="large-radius custom-form-control"
               />
-              {/* </FloatingLabel> */}
             </Form.Group>
 
             {/* 4. Address */}
@@ -115,7 +198,11 @@ export default function ServicePage() {
                   value={formData.address}
                   onChange={handleChange}
                   className="custom-form-control rounded-pill"
+                  isInvalid={!!validationErrors.address}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {validationErrors.address}
+                </Form.Control.Feedback>
               </FloatingLabel>
             </Form.Group>
 
@@ -129,13 +216,17 @@ export default function ServicePage() {
                   value={formData.preferredDate}
                   onChange={handleChange}
                   className="rounded-pill custom-form-control"
+                  isInvalid={!!validationErrors.preferredDate}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {validationErrors.preferredDate}
+                </Form.Control.Feedback>
               </Form.Group>
 
               {/* 6. Budget */}
               <Form.Group as={Col} md={6} className="mb-4">
                 <Form.Label>Budget</Form.Label>
-                <InputGroup>
+                <InputGroup hasValidation>
                   {/* Currency Select */}
                   <Form.Select
                     aria-label="Currency"
@@ -157,15 +248,27 @@ export default function ServicePage() {
                     value={formData.budget}
                     onChange={handleChange}
                     className="rounded-pill custom-form-control"
+                    isInvalid={!!validationErrors.budget}
                   />
+
+                  <Form.Control.Feedback type="invalid" tooltip>
+                    {validationErrors.budget}
+                  </Form.Control.Feedback>
                 </InputGroup>
+                <Form.Control.Feedback type="invalid">
+                  {validationErrors.budgetValue}{" "}
+                </Form.Control.Feedback>
               </Form.Group>
             </Row>
 
             {/* 7. Image Upload */}
             <Form.Group className="mb-4">
               <Form.Label>Image Upload</Form.Label>
-              <div className="border border-2 rounded-3 p-5 text-center file-upload-box">
+              <div
+                className={`border border-2 rounded-3 p-5 text-center file-upload-box ${
+                  validationErrors.images ? "border-danger" : "border-secondary"
+                }`}
+              >
                 <i className="fas fa-image fa-3x text-muted mb-3"></i>
 
                 <input
@@ -196,6 +299,11 @@ export default function ServicePage() {
                   </small>
                 )}
               </div>
+              {validationErrors.images && (
+                <div className="invalid-feedback d-block">
+                  {validationErrors.images}
+                </div>
+              )}
             </Form.Group>
 
             {/* 8. Submit Button */}
