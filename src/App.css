@@ -27,12 +27,127 @@ a:hover {
   color: var(--main-color) !important;
 }
 /* Start Navbar */
-.logo {
+.logo{
   color: var(--main-color);
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
   text-decoration: none;
 }
+.nav-link:hover
+{
+  color: var(--main-color);
+}
 /* End Navbar */
+
+/* **************Login ******************* */
+.forget
+{
+  color: var(--main-color);
+}
+.big-radio {
+  transform: scale(1.5);
+  accent-color: var(--main-color); 
+  cursor: pointer;
+  
+}
+.remember
+{
+    font-size: 18px;
+}
+
+/* *********************SignUp******************* */
+.heading
+{
+  color: var(--main-color);
+}
+.heading+p
+{
+  font-size: 18px;
+  color: #757b85;
+}
+.tologin
+{
+  color: var(--main-color);
+}
+.submitBtn
+{
+    background-color: var(--main-color) ;
+    color: #fff ;
+    width: 100px;
+}
+
+.submitBtn:hover
+{
+    background-color:var(--main-color);
+    color: #fff;
+}
+
+.form-control:focus
+{
+  box-shadow:0 0 0 .25rem var( --hover-secondary-color) ;
+  border-color: transparent;
+}
+
+.agreePolicy
+{
+    font-size: 18px;
+}
+.agreePolicy>span 
+{
+    color: var(--main-color);
+    font-weight: 500;
+}
+.big-check {
+  transform: scale(1.7);
+  accent-color: var(--main-color); 
+  cursor: pointer;
+}
+.form
+{
+    padding: 35px;
+}
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 1.1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  opacity: 0.8;
+}
+
+.password-toggle:hover {
+  color: var(--main-color);
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+}
+
+/* **************************Contacts********************* */
+
+.contacts-Container .left i
+{
+  background-color: var(--secondary-color);
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.left h2
+{
+  font-size: 40px ;
+  font-weight: 700;
+  color: var(--main-color);
+}
+.left .link
+{
+  color: var(--main-color);
+}
+/* .office, .email, .phone
+{
+  box-shadow: 0px 0px 7px var(--hover-secondary-color);
+} */
 
 /* Start Services */
 .custom-form-control:hover,
@@ -65,3 +180,40 @@ a:hover {
 }
 
 /* End Services */
+
+/* Start Footer */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: rgb(36, 36, 36);
+}
+.social li .twitter:hover {
+  color: #1d9bf0;
+  cursor: pointer;
+}
+.social li .facebook:hover {
+  color: #4267b2;
+  cursor: pointer;
+}
+.social li .instagram:hover {
+  color: #d2145e;
+  cursor: pointer;
+}
+.social li .linkedin:hover {
+  color: #0077b5;
+  cursor: pointer;
+}
+.rights {
+  text-align: center;
+  word-spacing: 7px;
+  color: rgb(81, 81, 81);
+}
+.rights span {
+  color: var(--main-color);
+  font-weight: 600;
+}
+/* End Footer */
