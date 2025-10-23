@@ -27,10 +27,41 @@ a:hover {
   color: var(--main-color) !important;
 }
 /* Start Navbar */
-.logo{
-    color: var(--main-color);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
-    text-decoration: none;
+.logo {
+  color: var(--main-color);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  text-decoration: none;
 }
 /* End Navbar */
-/* Start */
+
+/* Start Services */
+.custom-form-control:hover,
+.custom-form-control:focus {
+  border-color: var(--main-color) !important;
+
+  box-shadow: 0 0 0 0.25rem var(--secondary-color);
+}
+
+.form-control[as="textarea"]:focus,
+.form-control[as="textarea"]:hover {
+  border-color: var(--main-color) !important;
+  box-shadow: 0 0 0 0.25rem var(--secondary-color);
+}
+
+.input-group > .form-select:focus,
+.input-group > .form-select:focus {
+  border-color: var(--main-color) !important;
+  box-shadow: 0 0 0 0.25rem var(--secondary-color);
+}
+
+.large-radius {
+  border-radius: 1.5rem !important;
+}
+
+.file-upload-box {
+  border-style: dotted !important;
+  border-color: var(--secondary-color) !important;
+  opacity: 0.8;
+}
+
+/* End Services */

@@ -1,10 +1,17 @@
-// src/pages/service.jsx
-import React, { useState } from "react"; // 💡 تم إضافة React و useState
-import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  InputGroup,
+  FloatingLabel,
+} from "react-bootstrap";
 import ServiceNav from "../components/serviceNav";
 
 export default function ServicePage() {
-  // 1. تعريف حالة النموذج الأولية
+  // Initial form state (Updated currency to EGP based on your uploaded file)
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -16,18 +23,16 @@ export default function ServicePage() {
     images: [],
   });
 
-  // 2. دالة لمعالجة التغييرات (شاملة للملفات)
+  // Handle changes (including file uploads)
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
-    // معالجة حقل رفع الملفات
     if (name === "images" && files) {
       setFormData((prevData) => ({
         ...prevData,
         images: Array.from(files),
       }));
     } else {
-      // معالجة الحقول النصية والتواريخ والأرقام
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,
@@ -35,45 +40,42 @@ export default function ServicePage() {
     }
   };
 
-  // 3. دالة لمعالجة إرسال النموذج
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     alert("Request Submitted! Check the console.");
   };
 
-  // 4. المكون الرئيسي يعيد الـ JSX
   return (
     <Container className="my-5">
       <div className="text-center mb-5">
         <h2 className="display-4 fw-bold text-dark">Post a Service Request</h2>
-        <p className="lead text-muted">
-          Let's find the right professional for your job.
-        </p>
+        <p className="lead">Let's find the right professional for your job.</p>
       </div>
-
-      <ServiceNav />
-
       <Row className="justify-content-center">
-        <Col md={8} lg={6}>
-          {/* ربط دالة handleSubmit بالنموذج */}
+        <Col lg={8}>
           <Form onSubmit={handleSubmit}>
             {/* 1. Title */}
             <Form.Group className="mb-4">
               <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="e.g., Custom Bookshelf Installation"
-                size="lg"
-                name="title" // 💡 إضافة اسم الحقل
-                value={formData.title} // 💡 ربط قيمة الحقل
-                onChange={handleChange} // 💡 ربط دالة التغيير
-              />
+              <FloatingLabel controlId="titleInput" label="Title">
+                <Form.Control
+                  type="text"
+                  placeholder="e.g., Custom Bookshelf Installation"
+                  size="lg"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  className="custom-form-control rounded-pill"
+                />
+              </FloatingLabel>
             </Form.Group>
 
             {/* 2. Description */}
             <Form.Group className="mb-4">
               <Form.Label>Description</Form.Label>
+              {/* <FloatingLabel controlId="descriptionInput" label="Description"> */}
               <Form.Control
                 as="textarea"
                 rows={4}
@@ -81,32 +83,40 @@ export default function ServicePage() {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
+                className="large-radius custom-form-control"
               />
+              {/* </FloatingLabel> */}
             </Form.Group>
 
             {/* 3. Observations */}
             <Form.Group className="mb-4">
               <Form.Label>Observations</Form.Label>
+              {/* <FloatingLabel controlId="observationsInput" label="Observations"> */}
               <Form.Control
                 as="textarea"
                 rows={3}
-                placeholder="Are there any specific details, obstacles, or access instructions? e.g., 'Third floor apartment with no elevator.'"
+                placeholder="Are there any specific details, obstacles, or access instructions?"
                 name="observations"
                 value={formData.observations}
                 onChange={handleChange}
+                className="large-radius custom-form-control"
               />
+              {/* </FloatingLabel> */}
             </Form.Group>
 
             {/* 4. Address */}
             <Form.Group className="mb-4">
               <Form.Label>Address</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your full address"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-              />
+              <FloatingLabel controlId="addressInput" label="Address">
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your full address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  className="custom-form-control rounded-pill"
+                />
+              </FloatingLabel>
             </Form.Group>
 
             <Row>
@@ -118,44 +128,46 @@ export default function ServicePage() {
                   name="preferredDate"
                   value={formData.preferredDate}
                   onChange={handleChange}
+                  className="rounded-pill custom-form-control"
                 />
               </Form.Group>
 
-              {/* 6. Budget (with Currency Select) */}
+              {/* 6. Budget */}
               <Form.Group as={Col} md={6} className="mb-4">
                 <Form.Label>Budget</Form.Label>
                 <InputGroup>
-                  {/* ربط حقل العملة Select */}
+                  {/* Currency Select */}
                   <Form.Select
                     aria-label="Currency"
                     style={{ maxWidth: "100px" }}
                     name="currency"
                     value={formData.currency}
                     onChange={handleChange}
+                    className="custom-form-control rounded-pill"
                   >
                     <option>EGP</option>
                     <option>USD</option>
                     <option>SAR</option>
                   </Form.Select>
-                  {/* ربط حقل المبلغ */}
+                  {/* Budget Input */}
                   <Form.Control
-                    type="number"
+                    type="text"
                     placeholder="0.00"
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
+                    className="rounded-pill custom-form-control"
                   />
                 </InputGroup>
               </Form.Group>
             </Row>
 
-            {/* 7. Image Upload - تم ربط معالجة الملفات */}
+            {/* 7. Image Upload */}
             <Form.Group className="mb-4">
               <Form.Label>Image Upload</Form.Label>
-              <div className="border border-secondary border-2 border-dashed rounded-3 p-5 text-center">
+              <div className="border border-2 rounded-3 p-5 text-center file-upload-box">
                 <i className="fas fa-image fa-3x text-muted mb-3"></i>
 
-                {/* حقل إدخال الملفات المخفي */}
                 <input
                   className="d-none"
                   id="file-upload"
@@ -171,17 +183,16 @@ export default function ServicePage() {
                   style={{ cursor: "pointer" }}
                   className="d-block mb-1 text-primary fw-bold"
                 >
-                  رفع ملف
+                  Upload a file
                 </label>
 
-                {/* عرض عدد الملفات المرفوعة */}
                 {formData.images.length > 0 ? (
                   <small className="d-block text-success">
-                    تم اختيار {formData.images.length} ملف.
+                    {formData.images.length} file(s) selected.
                   </small>
                 ) : (
                   <small className="d-block text-muted">
-                    أو اسحب وأفلت (PNG, JPG, GIF بحد أقصى 10MB)
+                    or drag and drop (PNG, JPG, GIF up to 10MB)
                   </small>
                 )}
               </div>
@@ -189,7 +200,7 @@ export default function ServicePage() {
 
             {/* 8. Submit Button */}
             <Button
-              variant="primary"
+              variant="warning"
               type="submit"
               className="w-100 main-btn p-3 mt-4"
             >
