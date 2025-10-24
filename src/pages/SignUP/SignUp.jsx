@@ -4,8 +4,7 @@ import { useState } from "react";
 import { FloatingLabel, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import "@fortawesome/fontawesome-free/css/all.min.css"; 
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default function SignUp() {
   let navigate = useNavigate();
@@ -39,10 +38,7 @@ export default function SignUp() {
       .required("Name is required"),
     email: Yup.string().email("Invalid Email").required("Email is required"),
     address: Yup.string()
-      .matches(
-        /^[A-Za-z0-9À-ÖØ-öø-ÿ\s,.'/-]{5,100}$/,
-        "Invalid address format"
-      )
+      .matches(/^[A-Za-z0-9À-ÖØ-öø-ÿ\s,.'/-]{5,100}$/, "Invalid address format")
       .required("Address is required"),
     city: Yup.string()
       .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]{2,50}$/, "Invalid City")
@@ -91,9 +87,15 @@ export default function SignUp() {
           Join a community of skilled artisans and clients
         </p>
 
-        <Form onSubmit={formik.handleSubmit} className="form shadow bg-light rounded">
-          
-          <FloatingLabel controlId="userName" label="Full Name" className="mb-3">
+        <Form
+          onSubmit={formik.handleSubmit}
+          className="form shadow bg-light rounded"
+        >
+          <FloatingLabel
+            controlId="userName"
+            label="Full Name"
+            className="mb-3"
+          >
             <Form.Control
               type="text"
               name="name"
@@ -108,8 +110,11 @@ export default function SignUp() {
             <div className="alert alert-danger py-2">{formik.errors.name}</div>
           )}
 
-          
-          <FloatingLabel controlId="userEmail" label="Email Address" className="mb-3">
+          <FloatingLabel
+            controlId="userEmail"
+            label="Email Address"
+            className="mb-3"
+          >
             <Form.Control
               type="email"
               name="email"
@@ -124,8 +129,11 @@ export default function SignUp() {
             <div className="alert alert-danger py-2">{formik.errors.email}</div>
           )}
 
-          
-          <FloatingLabel controlId="userAddress" label="Address" className="mb-3">
+          <FloatingLabel
+            controlId="userAddress"
+            label="Address"
+            className="mb-3"
+          >
             <Form.Control
               type="text"
               name="address"
@@ -137,10 +145,11 @@ export default function SignUp() {
             />
           </FloatingLabel>
           {formik.errors.address && formik.touched.address && (
-            <div className="alert alert-danger py-2">{formik.errors.address}</div>
+            <div className="alert alert-danger py-2">
+              {formik.errors.address}
+            </div>
           )}
 
-          
           <FloatingLabel controlId="userCity" label="City" className="mb-3">
             <Form.Control
               type="text"
@@ -156,8 +165,11 @@ export default function SignUp() {
             <div className="alert alert-danger py-2">{formik.errors.city}</div>
           )}
 
-          
-          <FloatingLabel controlId="userPhone" label="Phone Number" className="mb-3">
+          <FloatingLabel
+            controlId="userPhone"
+            label="Phone Number"
+            className="mb-3"
+          >
             <Form.Control
               type="tel"
               name="phone"
@@ -172,7 +184,6 @@ export default function SignUp() {
             <div className="alert alert-danger py-2">{formik.errors.phone}</div>
           )}
 
-          
           <FloatingLabel
             controlId="userPassword"
             label="Password"
@@ -195,7 +206,9 @@ export default function SignUp() {
             ></i>
           </FloatingLabel>
           {formik.errors.password && formik.touched.password && (
-            <div className="alert alert-danger py-2">{formik.errors.password}</div>
+            <div className="alert alert-danger py-2">
+              {formik.errors.password}
+            </div>
           )}
 
           <FloatingLabel
@@ -225,7 +238,6 @@ export default function SignUp() {
             </div>
           )}
 
-          
           <div className="d-flex align-items-start gap-3 justify-content-center my-4">
             <input id="agree" type="checkbox" className="mt-2 ms-2 big-check" />
             <label htmlFor="agree" className="text-muted agreePolicy">
@@ -234,19 +246,24 @@ export default function SignUp() {
             </label>
           </div>
 
-          
-          <button type="submit" className="border-0 w-100 py-1 fw-medium fs-5 btn submitBtn">
+          <button
+            type="submit"
+            className="border-0 w-100 py-1 fw-medium fs-5 btn submitBtn"
+          >
             {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Sign Up"}
           </button>
-        <p className="mt-4 text-center text-muted">
-          Already have an account?
-          <span>
-            <Link to={"/login"} className="fw-medium text-decoration-none tologin">
-              {" "}
-              Login
-            </Link>
-          </span>
-        </p>
+          <p className="mt-4 text-center text-muted">
+            Already have an account?
+            <span>
+              <Link
+                to={"/login"}
+                className="fw-medium text-decoration-none tologin"
+              >
+                {" "}
+                Login
+              </Link>
+            </span>
+          </p>
         </Form>
       </div>
     </>

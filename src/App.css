@@ -231,3 +231,13 @@ a {
   font-weight: 600;
 }
 /* End Footer */
+
+/* Start BookService */
+.form-check-input:checked {
+  background-color: var(--main-color);
+  box-shadow: 0 0 0 4px rgba(237, 178, 41, 0.463);
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 4px rgba(237, 178, 41, 0.463);
+}
+/* End BookService */

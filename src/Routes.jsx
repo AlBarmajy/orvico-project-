@@ -7,6 +7,7 @@ import Contacts from "./Pages/Contacts/Contacts.jsx";
 import Error from "./Pages/Error/Error.jsx";
 // import ServicesPage from "./Pages/Services/ServicesPage.jsx";
 import ServicePage from "./pages/service.jsx";
+import BookServicePage from "./pages/BookService.jsx";
 const Routes = [
   {
     Path: "/",
@@ -20,11 +21,14 @@ const Routes = [
         path: "/home",
         element: <Home />,
       },
-      {
-        path: "/services",
-        // element:<ServicesPage/>
-        element: <ServicePage/>,
-      },
+      // {
+      //   path: "/services",
+      //   element: <ServicePage />,
+      // },
+      // {
+      //   path: "/services",
+      //   element: <ServicesPage />,
+      // },
       {
         path: "/login",
         element: <Login />,
@@ -36,6 +40,11 @@ const Routes = [
       {
         path: "/contacts",
         element: <Contacts />,
+      },
+      {
+        // path: "/book-service",
+        path: "/services",
+        element: <BookServicePage />,
       },
     ],
   },
