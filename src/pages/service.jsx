@@ -134,7 +134,12 @@ export default function ServicePage() {
         <p className="lead">Let's find the right professional for your job.</p>
       </div>
 
-      <Row className="justify-content-center">
+      <Row
+        className="justify-content-center p-5 m-3"
+        style={{
+          boxShadow: "0 0 10px 10px rgba(237, 178, 41, 0.23)",
+        }}
+      >
         <Col lg={8}>
           <Form onSubmit={handleSubmit}>
             {/* 1. Title */}
