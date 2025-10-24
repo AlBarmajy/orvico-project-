@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  FloatingLabel,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 export default function BookServicePage() {
   // 1. Initial State
@@ -77,7 +70,7 @@ export default function BookServicePage() {
               <Form.Label>Notes to Professional</Form.Label>
               <Form.Control
                 as="textarea"
-                rows={4}
+                rows={6}
                 placeholder="e.g. 'The front door lock is sticking, please check it.' or 'l need a custom-built bookshelf for a small alcove.'"
                 name="details"
                 value={bookingData.details}
