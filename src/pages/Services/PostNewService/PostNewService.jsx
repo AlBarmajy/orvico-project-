@@ -11,7 +11,7 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 
-export default function ServicePage() {
+export default function PostNewServicePage() {
   // Initial form state
   const [formData, setFormData] = useState({
     title: "",
@@ -23,6 +23,9 @@ export default function ServicePage() {
     currency: "EGP",
     images: [],
   });
+
+  // Validation State
+  const [validationErrors, setValidationErrors] = useState({});
 
   // Handle changes (including file uploads)
   const handleChange = (e) => {
@@ -48,9 +51,6 @@ export default function ServicePage() {
       }));
     }
   };
-
-  // Validation State
-  const [validationErrors, setValidationErrors] = useState({});
 
   // Form validation
   const validateForm = (data) => {
@@ -137,7 +137,7 @@ export default function ServicePage() {
       <Row
         className="justify-content-center p-5 m-3"
         style={{
-          boxShadow: "0 0 10px 10px rgba(237, 178, 41, 0.23)",
+          boxShadow: "0 0 25px 15px rgba(237, 178, 41, 0.26)",
         }}
       >
         <Col lg={8}>
